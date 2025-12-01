@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Updated Title to reflect monolingual content -->
+    <title>Mahalla Go | Haqiqiy O'zbek Milliy Taomlari Yetkazib Berish</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:wght@300;700&display=swap" rel="stylesheet">
+    
+    <!-- Chosen Palette: Warm Professional - Cream background (#fdfbf7) for warmth/food connection, Deep Slate (#1e293b) for text legibility, and Burnt Orange (#ea580c) as the primary action color representing the 'hearth' and food, with Sage Green (#059669) for growth/financials. -->
+    
+    <!-- Application Structure Plan: 
+         The structure is adapted for a public-facing website:
+         1. **Hero:** Brand introduction and primary Call to Action (Order/Explore).
+         2. **New: Guarantees (Banners):** Immediate trust builders (Safety, Delivery, Freshness).
+         3. **Problem/Solution:** Clear, concise statement of value.
+         4. **The Mahalla Moat:** Focus on the competitive differentiator (SanPin Trust).
+         5. **Product Experience (MVP):** Showing the simple pre-order flow.
+         6. **Contact/CTA:** Simple closing section.
+         This flow is designed to quickly capture user interest, explain the unique value (trust/authenticity), and provide immediate next steps.
+    -->
+
+    <!-- Visualization & Content Choices:
+         1. **Value Proposition (Icons):** Goal: Instant understanding. Method: Unicode/Tailwind icons. Justification: Quick, high-impact visual communication of key benefits (Authenticity, Trust, Convenience).
+         2. **Product Flow:** Goal: Show simplicity of MVP. Method: Styled HTML/Tailwind steps (Diagram). Justification: Visualizes the pipeline (Home -> App -> Delivery).
+         3. **Banners (New):** Goal: Highlighting key promises. Method: Large, contrasting Tailwind Cards. Justification: Draws attention to competitive advantages (SanPin, Hot Delivery).
+         NO SVG graphics used. NO Mermaid JS used.
+    -->
+    
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fdfbf7;
+            scroll-behavior: smooth;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Merriweather', serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px; /* Max width constraint */
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px; /* Base height */
+            max-height: 400px;
+        }
+        @media (max-width: 640px) {
+            .chart-container {
+                height: 300px;
+            }
+        }
+        .section-padding {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+        .icon-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 4rem;
+            height: 4rem;
+            border-radius: 9999px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        /* Custom class for the deep gray text color from the logo */
+        .logo-dark {
+            color: #333333; 
+        }
+        /* Custom class for the bright green text color from the logo */
+        .logo-green {
+            color: #059669;
+        }
+        
+        /* Ensure the body itself is ready for the content */
+        body { opacity: 1; transition: opacity 0.3s; }
+        
+        /* Custom styling for the new Process Flow icons */
+        .process-icon-box {
+            width: 3rem;
+            height: 3rem;
+            line-height: 3rem;
+            font-size: 1.25rem;
+        }
+
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation (Simple) -->
+    <header class="sticky top-0 z-50 bg-[#fdfbf7]/95 backdrop-blur-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- LOGO: CHANGED TO Mahalla Go -->
+                <a href="#" class="flex items-center text-2xl font-extrabold" aria-label="Mahalla Go Home">
+                    <span class="logo-dark mr-1">Mahalla</span>
+                    <span class="logo-green">Go</span>
+                </a>
+                <nav class="flex items-center space-x-4">
+                    <div class="space-x-4">
+                        <a href="#about" class="text-gray-600 hover:text-orange-600 transition-colors">Biz haqimizda</a>
+                        <a href="#moat" class="text-gray-600 hover:text-orange-600 transition-colors">Ishonch</a>
+                        <a href="#product" class="text-gray-600 hover:text-orange-600 transition-colors">Qanday ishlaydi</a>
+                        <!-- NAVIGATION ORDER NOW LINK UPDATED -->
+                        <a href="https://tally.so/r/vGXvNQ" target="_blank" class="bg-orange-600 text-white hover:bg-orange-700 px-4 py-2 rounded-lg text-sm font-medium transition-colors ml-4">Buyurtma berish</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- 1. Hero Section -->
+    <section id="hero" class="bg-white overflow-hidden py-24 md:py-40 content-block">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-12 items-center">
+                <div class="lg:col-span-8 order-2 lg:order-1 mt-10 lg:mt-0">
+                    <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-gray-900 leading-tight">
+                        Haqiqiy O'zbek 
+                        <span class="text-orange-600">Uy Taomlari</span>, 
+                        Yetkazib berish bilan.
+                    </h1>
+                    <p class="mt-6 text-xl text-gray-600 max-w-xl">
+                        Fast fooddan charchadingizmi? Biz sizni to'g'ridan-to'g'ri <strong>Sanitariya Qoidalari va Normalari</strong> sertifikatiga ega mahalliy oshpazlar (<span class="font-semibold">Pazandalar</span>) bilan bog'laymiz. Bu sizga yangi, sog'lom va an'anaviy "Uy Taomi"ni iste'mol qila olguningizcha doimiy ishonch va sifatni kafolatlaydi.
+                    </p>
+                    <div class="mt-10 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <!-- HERO "SEE TODAY'S MENU" LINK UPDATED -->
+                        <a href="https://tally.so/r/vGXvNQ" target="_blank" class="w-full sm:w-auto flex items-center justify-center px-10 py-4 border border-transparent text-lg font-bold rounded-lg text-white bg-orange-600 hover:bg-orange-700 transition-colors shadow-2xl">
+                            Bugungi menyuni ko'rish
+                        </a>
+                        <a href="#moat" class="w-full sm:w-auto flex items-center justify-center px-10 py-4 border border-gray-300 text-lg font-bold rounded-lg text-gray-800 bg-white hover:bg-gray-50 transition-colors shadow-md">
+                            Bizning ishonchimiz
+                        </a>
+                    </div>
+                </div>
+                <!-- REMOVED: Previous visual box here. -->
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: Delivery and Safety Guarantees (Banners) -->
+    <section id="guarantees" class="bg-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-extrabold text-gray-900 text-center mb-10">Yetkazib Berish va Xavfsizlik Kafolati</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Banner 1: SanPin Safety -->
+                <div class="bg-green-600 text-white p-8 rounded-xl shadow-xl transition-transform transform hover:scale-[1.02]">
+                    <div class="flex items-center justify-center text-4xl mb-3 font-bold">
+                        &#x2611; <!-- Checkbox with check -->
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Sanitariya Qoidalari va Normalari Kafolati</h3>
+                    <p class="text-green-200">Har bir Pazanda oshxonasi jismonan tekshiriladi va bizning qat'iy **Sanitariya Qoidalari va Normalari** standartlarimizga muvofiqligi sertifikatlanadi. Sizning sog'lig'ingiz - bizning ustuvor vazifamiz.</p>
+                </div>
+
+                <!-- Banner 2: Hot Delivery -->
+                <div class="bg-orange-600 text-white p-8 rounded-xl shadow-xl transition-transform transform hover:scale-[1.02]">
+                    <div class="flex items-center justify-center text-4xl mb-3 font-bold">
+                        &#x1F6F5; <!-- Scooter Icon -->
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Issiqlik Vaqti Kafolati</h3>
+                    <p class="text-orange-200">Optimallashtirilgan, to'plangan yetkazib berish marshrutlarimiz tufayli, taomingiz ofis tushlik vaqtida har doim issiq va yangi yetib kelishiga kafolat beramiz.</p>
+                </div>
+
+                <!-- Banner 3: Freshness & Efficiency -->
+                <div class="bg-blue-600 text-white p-8 rounded-xl shadow-xl transition-transform transform hover:scale-[1.02]">
+                    <div class="flex items-center justify-center text-4xl mb-3 font-bold">
+                        &#x2728; <!-- Sparkles for Freshness -->
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Keyingi Kun Yangiligi</h3>
+                    <p class="text-blue-200">Oldindan buyurtma tizimi Pazandalarimizga faqat eng yangi ingredientlarni xarid qilish va ularni xuddi o'sha kuni pishirish imkonini beradi. Konservalangan yoki muzlatilgan emas, faqat yangi taom.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 2. Value Proposition Grid (About) -->
+    <section id="about" class="bg-gray-50 section-padding content-block">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-extrabold text-gray-900 text-center mb-16">Nega Mahalla Go - Sog'lom Tanlov?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
+                <!-- Card 1: Authentic Cuisine -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-orange-500">
+                    <div class="icon-box bg-orange-100 text-orange-600 mx-auto" aria-label="Authenticity">
+                        &#x1F372; <!-- Cooking Pot / Soup -->
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">100% Uy Taomi Mazasi</h3>
+                    <p class="text-gray-600">
+                        O'zbek uy taomlarining haqiqiy retseptlaridan bahramand bo'ling, tajribali mahalliy oshpazlar (`Pazandalar`) tomonidan tayyorlangan, tijorat yog'laridan holi.
+                    </p>
+                </div>
+                
+                <!-- Card 2: Health & Safety -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-green-500">
+                    <div class="icon-box bg-green-100 text-green-600 mx-auto" aria-label="Safety Checkmark">
+                        &#x1F4A6; <!-- Sweat Drops / Hygiene -->
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Tasdiqlangan Ishonch Tizimi</h3>
+                    <p class="text-gray-600">
+                        Har bir oshxona jismonan tekshirilib, <strong>Sanitariya Qoidalari va Normalari</strong> standartlari bo'yicha sertifikatlanadi, bu esa tasdiqlanmagan sotuvchilar bera olmaydigan xavfsizlikni taklif etadi.
+                    </p>
+                </div>
+
+                <!-- Card 3: Convenience & Value -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-blue-500">
+                    <div class="icon-box bg-blue-100 text-blue-600 mx-auto" aria-label="Speed/Time">
+                        &#x1F6F5; <!-- Scooter Icon -->
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Samarali, Issiq Yetkazib Berish</h3>
+                    <p class="text-gray-600">
+                        Bizning oldindan buyurtma modelimiz hududingizdagi buyurtmalarni jamlab, taomlaringizni ofis tushlik vaqtida issiq va arzon narxda yetib kelishini kafolatlaydi.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. The Mahalla Moat (Trust Section) -->
+    <!-- This section is now the full-width Trust Banner -->
+    <section id="moat" class="section-padding content-block bg-green-500 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="flex items-center justify-center mb-4">
+                <span class="text-6xl font-extrabold text-white">&#x2611;</span>
+            </div>
+            <h2 class="text-4xl font-extrabold mb-3">
+                BIZNING MAXSUS KAFOLATIMIZ: SANITARIYA QOIDALARI VA NORMALARI TASDIQLANGAN
+            </h2>
+            <p class="text-xl font-medium max-w-3xl mx-auto opacity-90">
+                Uy taomining sifati professional oziq-ovqat xavfsizligi standartlari bilan birlashtirilgan. Bizning har bir oshxonamiz shaxsan tekshirilgan.
+            </p>
+            
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+                <!-- Moat Point 1 -->
+                <div class="bg-green-600 p-4 rounded-lg shadow-md">
+                    <span class="text-2xl mr-2">&#x1F50E;</span>
+                    <strong class="block text-lg mt-1">Jismoniy Audit</strong>
+                    <p class="text-sm opacity-80">Har bir Pazanda oshxonasini shaxsan tekshiramiz va standartlarga muvofiqligini ta'minlaymiz.</p>
+                </div>
+                <!-- Moat Point 2 -->
+                <div class="bg-green-600 p-4 rounded-lg shadow-md">
+                    <span class="text-2xl mr-2">&#x1F37D;</span>
+                    <strong class="block text-lg mt-1">Majburiy Ta'm Sinovi</strong>
+                    <p class="text-sm opacity-80">Taomlar platformaga qo'shilishidan oldin sifat va haqiqiy maza uchun sinovdan o'tkaziladi.</p>
+                </div>
+                <!-- Moat Point 3 -->
+                <div class="bg-green-600 p-4 rounded-lg shadow-md">
+                    <span class="text-2xl mr-2">&#x1F512;</span>
+                    <strong class="block text-lg mt-1">O'z-o'zidan Ishonch</strong>
+                    <p class="text-sm opacity-80">Biz Instagram/tartibga solinmagan yetkazib berish xavfini bartaraf etamiz.</p>
+                </div>
+            </div>
+
+            <!-- Removed the small chart-container from the right side -->
+        </div>
+    </section>
+
+    <!-- 4. Product Experience (How It Works) -->
+    <section id="product" class="bg-gray-50 section-padding content-block">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-extrabold text-gray-900 text-center mb-16">Oddiy Mahalla Go Tajribasi</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+                <!-- Connector Lines (Visual only, hidden on small screens) -->
+                <div class="hidden md:block absolute top-1/2 left-0 right-0 transform -translate-y-1/2">
+                    <div class="h-1 bg-orange-200 mx-10"></div>
+                </div>
+
+                <!-- Step 1: Pre-Order -->
+                <div class="relative text-center p-6 bg-white rounded-xl shadow-lg z-10">
+                    <div class="icon-box bg-orange-600 text-white mx-auto shadow-md">
+                        &#x1F4DD; <!-- Memo / Order -->
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Taomga Oldindan Buyurtma Berish</h3>
+                    <p class="text-gray-600">
+                        Sertifikatlangan Pazandalarning kunlik aylanma menyusini ko'ring va keyingi kun uchun soat 8:00 gacha buyurtma bering.
+                    </p>
+                </div>
+
+                <!-- Step 2: Batch Cooking -->
+                <div class="relative text-center p-6 bg-white rounded-xl shadow-lg z-10">
+                    <div class="icon-box bg-orange-600 text-white mx-auto shadow-md">
+                        &#x1F373; <!-- Cooking Pot / Chef -->
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Pazanda Tayyorlaydi</h3>
+                    <p class="text-gray-600">
+                        Uy oshpazi qancha ovqat tayyorlashni aniq biladi, bu esa chiqindilarni minimallashtiradi va eng yangi ingredientlardan foydalanishni ta'minlaydi.
+                    </p>
+                </div>
+
+                <!-- Step 3: Aggregated Delivery -->
+                <div class="relative text-center p-6 bg-white rounded-xl shadow-lg z-10">
+                    <div class="icon-box bg-orange-600 text-white mx-auto shadow-md">
+                        &#x1F6F5; <!-- Scooter Icon -->
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Issiq Yetkazib Berish</h3>
+                    <p class="text-gray-600">
+                        Bizning optimallashtirilgan marshrutlarimiz hududingizdagi buyurtmalarni jamlaydi va taom ofis tushlik vaqtida issiq yetib kelishini kafolatlaydi.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: Motivational Quote & Final CTA -->
+    <section id="quote-cta" class="bg-gray-900 section-padding">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <blockquote class="text-white mb-8">
+                <p class="text-3xl md:text-4xl font-bold italic leading-relaxed">
+                    "Salomatlik - bu shaxsiy sarmoyadir, unga e'tibor berish eng katta foyda keltiradi."
+                </p>
+            </blockquote>
+            
+            <h2 class="text-3xl font-extrabold text-white mb-6">Sog'lom Hayotni Bugundan Boshlang</h2>
+            
+            <a href="https://tally.so/r/vGXvNQ" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center px-12 py-4 border border-transparent text-xl font-bold rounded-lg text-white bg-orange-600 hover:bg-orange-700 transition-colors shadow-2xl transform hover:scale-105">
+                <span class="mr-2">&#x1F373;</span> Bugun Buyurtma Berish
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
+            <div class="text-center md:text-left">
+                <p class="text-base text-gray-400">Mahalla Go &copy; 2026. Barcha huquqlar himoyalangan.</p>
+            </div>
+            <div class="mt-4 md:mt-0 text-center md:text-right">
+                <a href="#" class="text-sm text-gray-400 hover:text-gray-600">Maxfiylik Siyosati</a>
+                <span class="mx-2 text-gray-400">|</span>
+                <a href="#" class="text-sm text-gray-400 hover:text-gray-600">Xizmat Ko'rsatish Shartlari</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // NOTE: All language switching logic and associated variables have been removed.
+        
+        // --- Chart Configs (kept for completeness, though charts were removed) ---
+        Chart.defaults.font.family = "'Inter', sans-serif";
+        Chart.defaults.color = '#475569';
+
+    </script>
+</body>
+</html>
