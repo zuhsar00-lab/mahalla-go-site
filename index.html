@@ -98,37 +98,7 @@
             font-size: 1.25rem;
         }
 
-        /* CUSTOM STYLING FOR HERO BACKGROUND IMAGE PLACEHOLDER */
-        .hero-visual {
-            background-color: #fff8f5; /* Light orange background */
-            /* Using a placehold.co image that represents food/shorva */
-            background-image: url('https://placehold.co/800x600/7c4915/f9f9f9/png?text=Issiq+SHORVA');
-            background-size: cover;
-            background-position: center;
-            border-radius: 1.5rem;
-            min-height: 350px;
-            box-shadow: 0 10px 15px rgba(234, 88, 12, 0.2);
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-        .hero-visual-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.15); /* Darker overlay for text readability */
-        }
-        .hero-visual-content {
-            z-index: 10;
-            color: white; /* Changed text color to white for better contrast on background image */
-            padding: 2rem;
-            font-weight: 600;
-        }
+        /* Hero visual is now completely removed */
 
     </style>
 </head>
@@ -179,7 +149,7 @@
     <section id="hero" class="bg-white overflow-hidden py-24 md:py-40 content-block">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="lg:grid lg:grid-cols-12 lg:gap-12 items-center">
-                <div class="lg:col-span-6 order-2 lg:order-1 mt-10 lg:mt-0">
+                <div class="lg:col-span-12 order-2 lg:order-1 mt-10 lg:mt-0">
                     <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-gray-900 leading-tight">
                         Haqiqiy O'zbek 
                         <span class="text-orange-600">Uy Taomlari</span>, 
@@ -198,15 +168,7 @@
                         </a>
                     </div>
                 </div>
-                <!-- Visual placeholder for the image -->
-                <div class="lg:col-span-6 order-1 lg:order-2">
-                    <div class="hero-visual">
-                        <div class="hero-visual-overlay"></div>
-                        <div class="hero-visual-content">
-                            <!-- REMOVED VISIBLE PLACEHOLDER TEXT -->
-                        </div>
-                    </div>
-                </div>
+                <!-- Removed the visual placeholder entirely to prevent recurring text errors -->
             </div>
         </div>
     </section>
