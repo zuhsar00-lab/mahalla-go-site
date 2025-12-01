@@ -9,6 +9,14 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:wght@300;700&display=swap" rel="stylesheet">
     
+    <!-- OPEN GRAPH (OG) METADATA FOR SOCIAL MEDIA SHARING (TELEGRAM, FACEBOOK) -->
+    <meta property="og:title" content="Mahalla Go: Uy Taomlari Yetkazish Xizmati">
+    <meta property="og:description" content="Sanitariya Qoidalari va Normalari tasdiqlangan Pazandalardan ofisingizga har kuni issiq va yangi taomga buyurtma bering. Sog'lom turmush tarzi — Mahalla Go bilan.">
+    <!-- !!! MUHIM: BU HAVOLA OMMABOP PLOV RASMINING PLACEHOLDERI. UNI O'Z RASMINGIZ BILAN ALMASHTIRING. -->
+    <meta property="og:image" content="https://placehold.co/1200x630/7c4915/ffffff/png?text=Mahalla+Go%0AShorva+Taomi">
+    <meta property="og:url" content="https://zuhsar00-lab.github.io/mahalla-go-site/">
+    <meta property="og:type" content="website">
+
     <!-- Chosen Palette: Warm Professional - Cream background (#fdfbf7) for warmth/food connection, Deep Slate (#1e293b) for text legibility, and Burnt Orange (#ea580c) as the primary action color representing the 'hearth' and food, with Sage Green (#059669) for growth/financials. -->
     
     <!-- Application Structure Plan: 
@@ -89,6 +97,37 @@
             font-size: 1.25rem;
         }
 
+        /* CUSTOM STYLING FOR HERO BACKGROUND IMAGE PLACEHOLDER */
+        .hero-visual {
+            background-color: #fff8f5; /* Light orange background */
+            background-image: url('https://placehold.co/800x600/f5c2a1/27272a/png?text=UY+TAOMI+FOTOSI'); /* Placeholder image to show where a real food image should go */
+            background-size: cover;
+            background-position: center;
+            border-radius: 1.5rem;
+            min-height: 350px;
+            box-shadow: 0 10px 15px rgba(234, 88, 12, 0.2);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .hero-visual-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.1); /* Dark overlay for text readability */
+        }
+        .hero-visual-content {
+            z-index: 10;
+            color: #333;
+            padding: 2rem;
+            font-weight: 600;
+        }
+
     </style>
 </head>
 <body class="antialiased">
@@ -134,28 +173,11 @@
         </nav>
     </header>
 
-    <!-- JavaScript for Mobile Menu Toggle -->
-    <script>
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // Hide menu when clicking a link
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-    </script>
-    
     <!-- 1. Hero Section -->
     <section id="hero" class="bg-white overflow-hidden py-24 md:py-40 content-block">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="lg:grid lg:grid-cols-12 lg:gap-12 items-center">
-                <div class="lg:col-span-8 order-2 lg:order-1 mt-10 lg:mt-0">
+                <div class="lg:col-span-6 order-2 lg:order-1 mt-10 lg:mt-0">
                     <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-gray-900 leading-tight">
                         Haqiqiy O'zbek 
                         <span class="text-orange-600">Uy Taomlari</span>, 
@@ -174,7 +196,16 @@
                         </a>
                     </div>
                 </div>
-                <!-- REMOVED: Previous visual box here. -->
+                <!-- Visual placeholder for the image -->
+                <div class="lg:col-span-6 order-1 lg:order-2">
+                    <div class="hero-visual">
+                        <div class="hero-visual-overlay"></div>
+                        <div class="hero-visual-content">
+                            <h3 class="text-3xl font-bold text-white mb-2">SHORVA FOTOSI</h3>
+                            <p class="text-white/80">Bu yerda Issiq Sho'rva yoki boshqa haqiqiy O'zbek taomi rasmi bo'lishi kerak.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -380,6 +411,20 @@
         Chart.defaults.font.family = "'Inter', sans-serif";
         Chart.defaults.color = '#475569';
 
+        // JavaScript for Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Hide menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
     </script>
 </body>
 </html>
