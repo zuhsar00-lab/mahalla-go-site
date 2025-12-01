@@ -6,7 +6,8 @@
     <!-- Updated Title to reflect monolingual content -->
     <title>Mahalla Go | Haqiqiy O'zbek Milliy Taomlari Yetkazib Berish</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- CHART.JS LIBRARY FIX: Replaced potentially incorrect link with a stable one and ensured it's in the head. -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:wght@300;700&display=swap" rel="stylesheet">
     
     <!-- OPEN GRAPH (OG) METADATA FOR SOCIAL MEDIA SHARING (TELEGRAM, FACEBOOK) -->
@@ -202,8 +203,7 @@
                     <div class="hero-visual">
                         <div class="hero-visual-overlay"></div>
                         <div class="hero-visual-content">
-                            <h3 class="text-3xl font-bold text-white mb-2">ISSIQ SHORVA</h3>
-                            <p class="text-white/80">Bu yerda sizning taomingiz fotosi bo'lishi kerak.</p>
+                            <!-- REMOVED VISIBLE PLACEHOLDER TEXT -->
                         </div>
                     </div>
                 </div>
@@ -409,8 +409,11 @@
         // NOTE: All language switching logic and associated variables have been removed.
         
         // --- Chart Configs (kept for completeness, though charts were removed) ---
-        Chart.defaults.font.family = "'Inter', sans-serif";
-        Chart.defaults.color = '#475569';
+        // Ensuring Chart is defined before attempting to use it
+        if (typeof Chart !== 'undefined') {
+            Chart.defaults.font.family = "'Inter', sans-serif";
+            Chart.defaults.color = '#475569';
+        }
 
         // JavaScript for Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
