@@ -3,394 +3,584 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Updated Title to reflect monolingual content -->
-    <title>Mahalla Go | Haqiqiy O'zbek Milliy Taomlari Yetkazib Berish</title>
+    <title>HunAi - AI Hunar Tekshirish Platformasi</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- CHART.JS LIBRARY FIX: Replaced potentially incorrect link with a stable one and ensured it's in the head. -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:wght@300;700&display=swap" rel="stylesheet">
-    
-    <!-- OPEN GRAPH (OG) METADATA FOR SOCIAL MEDIA SHARING (TELEGRAM, FACEBOOK) -->
-    <meta property="og:title" content="Mahalla Go: Uy Taomlari Yetkazish Xizmati">
-    <meta property="og:description" content="Sanitariya Qoidalari va Normalari tasdiqlangan Pazandalardan ofisingizga har kuni issiq va yangi taomga buyurtma bering. Sog'lom turmush tarzi — Mahalla Go bilan.">
-    <!-- OG Image updated to reflect Shorva -->
-    <meta property="og:image" content="https://placehold.co/1200x630/7c4915/ffffff/png?text=Mahalla+Go%0AShorva+Taomi">
-    <meta property="og:url" content="https://zuhsar00-lab.github.io/mahalla-go-site/">
-    <meta property="og:type" content="website">
-
-    <!-- Chosen Palette: Warm Professional - Cream background (#fdfbf7) for warmth/food connection, Deep Slate (#1e293b) for text legibility, and Burnt Orange (#ea580c) as the primary action color representing the 'hearth' and food, with Sage Green (#059669) for growth/financials. -->
-    
-    <!-- Application Structure Plan: 
-         The structure is adapted for a public-facing website:
-         1. **Hero:** Brand introduction and primary Call to Action (Order/Explore).
-         2. **New: Guarantees (Banners):** Immediate trust builders (Safety, Delivery, Freshness).
-         3. **Problem/Solution:** Clear, concise statement of value.
-         4. **The Mahalla Moat:** Focus on the competitive differentiator (SanPin Trust).
-         5. **Product Experience (MVP):** Showing the simple pre-order flow.
-         6. **Contact/CTA:** Simple closing section.
-         This flow is designed to quickly capture user interest, explain the unique value (trust/authenticity), and provide immediate next steps.
-    -->
-
-    <!-- Visualization & Content Choices:
-         1. **Value Proposition (Icons):** Goal: Instant understanding. Method: Unicode/Tailwind icons. Justification: Quick, high-impact visual communication of key benefits (Authenticity, Trust, Convenience).
-         2. **Product Flow:** Goal: Show simplicity of MVP. Method: Styled HTML/Tailwind steps (Diagram). Justification: Visualizes the pipeline (Home -> App -> Delivery).
-         3. **Banners (New):** Goal: Highlighting key promises. Method: Large, contrasting Tailwind Cards. Justification: Draws attention to competitive advantages (SanPin, Hot Delivery).
-         NO SVG graphics used. NO Mermaid JS used.
-    -->
-    
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
-
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #fdfbf7;
-            scroll-behavior: smooth;
+        /* Custom font */
+        body { font-family: 'Inter', sans-serif; }
+        /* Set minimum height for full screen mobile effect */
+        #root { min-height: 100vh; }
+        /* Style for the video upload button simulation */
+        .video-upload-btn {
+            background-image: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative; /* Essential for containing the hidden input */
+            overflow: hidden; /* Essential for hiding the file input border */
         }
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Merriweather', serif;
+        .video-upload-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
         }
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 600px; /* Max width constraint */
-            margin-left: auto;
-            margin-right: auto;
-            height: 350px; /* Base height */
-            max-height: 400px;
+        /* Style to make the file input cover the button and be transparent */
+        .file-input-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0;
+            cursor: pointer;
+            z-index: 10;
         }
-        @media (max-width: 640px) {
-            .chart-container {
-                height: 300px;
-            }
-        }
-        .section-padding {
-            padding-top: 5rem;
-            padding-bottom: 5rem;
-        }
-        .icon-box {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 4rem;
-            height: 4rem;
-            border-radius: 9999px;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        /* Custom class for the deep gray text color from the logo */
-        .logo-dark {
-            color: #333333; 
-        }
-        /* Custom class for the bright green text color from the logo */
-        .logo-green {
-            color: #059669;
-        }
-        
-        /* Ensure the body itself is ready for the content */
-        body { opacity: 1; transition: opacity 0.3s; }
-        
-        /* Custom styling for the new Process Flow icons */
-        .process-icon-box {
-            width: 3rem;
-            height: 3rem;
-            line-height: 3rem;
-            font-size: 1.25rem;
-        }
-
-        /* Hero visual is now completely removed */
-
     </style>
 </head>
-<body class="antialiased">
+<body class="bg-gray-100">
 
-    <!-- Header & Navigation (Simple) -->
-    <header class="sticky top-0 z-50 bg-[#fdfbf7]/95 backdrop-blur-sm border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <!-- LOGO: Mahalla Go -->
-                <a href="#" class="flex items-center text-2xl font-extrabold" aria-label="Mahalla Go Home">
-                    <span class="logo-dark mr-1">Mahalla</span>
-                    <span class="logo-green">Go</span>
-                </a>
-                
-                <div class="flex items-center space-x-4">
-                    <!-- Desktop Nav Links (Hidden on small screens) -->
-                    <nav class="hidden sm:flex items-center space-x-4">
-                        <a href="#about" class="text-gray-600 hover:text-orange-600 transition-colors">Biz haqimizda</a>
-                        <a href="#moat" class="text-gray-600 hover:text-orange-600 transition-colors">Ishonch</a>
-                        <a href="#product" class="text-gray-600 hover:text-orange-600 transition-colors">Qanday ishlaydi</a>
-                        <!-- NAVIGATION ORDER NOW LINK -->
-                        <a href="https://tally.so/r/vGXvNQ" target="_blank" class="bg-orange-600 text-white hover:bg-orange-700 px-4 py-2 rounded-lg text-sm font-medium transition-colors ml-4">Buyurtma berish</a>
-                    </nav>
+    <div id="root" class="flex flex-col items-center pt-8 pb-20">
+        <!-- Content will be rendered here by JavaScript --></div>
 
-                    <!-- Mobile Menu Button (Hamburger) -->
-                    <button id="mobile-menu-btn" class="sm:hidden text-gray-800 focus:outline-none p-2 rounded-md hover:bg-gray-100 transition-colors" aria-label="Menu">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
+    <!-- Firebase SDK Imports (Modular version via CDN) --><script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, getDoc, onSnapshot, collection, query, serverTimestamp, setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        <!-- Mobile Menu (Full Screen Drawer) -->
-        <nav id="mobile-menu" class="hidden sm:hidden absolute top-16 left-0 w-full bg-white shadow-xl py-4 z-40 border-t border-gray-200">
-            <div class="flex flex-col space-y-3 px-4">
-                <a href="#about" class="text-gray-700 hover:bg-orange-50 p-2 rounded-md transition-colors w-full">Biz haqimizda</a>
-                <a href="#moat" class="text-gray-700 hover:bg-orange-50 p-2 rounded-md transition-colors w-full">Ishonch</a>
-                <a href="#product" class="text-gray-700 hover:bg-orange-50 p-2 rounded-md transition-colors w-full">Qanday ishlaydi</a>
-                <a href="https://tally.so/r/vGXvNQ" target="_blank" class="text-white bg-orange-600 hover:bg-orange-700 p-2 rounded-md text-center font-semibold mt-3 w-full">Buyurtma berish</a>
-            </div>
-        </nav>
-    </header>
+        // --- GLOBAL SETUP (Must use provided variables) ---
+        const APP_ID_FALLBACK = 'default-hunai-app'; // Updated APP ID fallback
+        const appId = typeof __app_id !== 'undefined' ? __app_id : APP_ID_FALLBACK;
+        const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
 
-    <!-- 1. Hero Section -->
-    <section id="hero" class="bg-white overflow-hidden py-24 md:py-40 content-block">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="lg:grid lg:grid-cols-12 lg:gap-12 items-center">
-                <div class="lg:col-span-12 order-2 lg:order-1 mt-10 lg:mt-0">
-                    <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-gray-900 leading-tight">
-                        Haqiqiy O'zbek 
-                        <span class="text-orange-600">Uy Taomlari</span>, 
-                        Yetkazib berish bilan.
-                    </h1>
-                    <p class="mt-6 text-xl text-gray-600 max-w-xl">
-                        Fast fooddan charchadingizmi? Biz sizni to'g'ridan-to'g'ri <strong>Sanitariya Qoidalari va Normalari</strong> sertifikatiga ega mahalliy oshpazlar (<span class="font-semibold">Pazandalar</span>) bilan bog'laymiz. Bu sizga yangi, sog'lom va an'anaviy "Uy Taomi"ni iste'mol qila olguningizcha doimiy ishonch va sifatni kafolatlaydi.
-                    </p>
-                    <div class="mt-10 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                        <!-- HERO "SEE TODAY'S MENU" LINK UPDATED -->
-                        <a href="https://tally.so/r/vGXvNQ" target="_blank" class="w-full sm:w-auto flex items-center justify-center px-10 py-4 border border-transparent text-lg font-bold rounded-lg text-white bg-orange-600 hover:bg-orange-700 transition-colors shadow-2xl">
-                            Bugungi menyuni ko'rish
-                        </a>
-                        <a href="#moat" class="w-full sm:w-auto flex items-center justify-center px-10 py-4 border border-gray-300 text-lg font-bold rounded-lg text-gray-800 bg-white hover:bg-gray-50 transition-colors shadow-md">
-                            Bizning ishonchimiz
-                        </a>
-                    </div>
-                </div>
-                <!-- Removed the visual placeholder entirely to prevent recurring text errors -->
-            </div>
-        </div>
-    </section>
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+        // setLogLevel('debug'); // Optional: uncomment for verbose logging
 
-    <!-- NEW SECTION: Delivery and Safety Guarantees (Banners) -->
-    <section id="guarantees" class="bg-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-extrabold text-gray-900 text-center mb-10">Yetkazib Berish va Xavfsizlik Kafolati</h2>
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <!-- Banner 1: SanPin Safety -->
-                <div class="bg-green-600 text-white p-8 rounded-xl shadow-xl transition-transform transform hover:scale-[1.02]">
-                    <div class="flex items-center justify-center text-4xl mb-3 font-bold">
-                        &#x2611; <!-- Checkbox with check -->
-                    </div>
-                    <h3 class="text-2xl font-bold mb-2">Sanitariya Qoidalari va Normalari Kafolati</h3>
-                    <p class="text-green-200">Har bir Pazanda oshxonasi jismonan tekshiriladi va bizning qat'iy **Sanitariya Qoidalari va Normalari** standartlarimizga muvofiqligi sertifikatlanadi. Sizning sog'lig'ingiz - bizning ustuvor vazifamiz.</p>
-                </div>
+        // --- STATE VARIABLES ---
+        let user = null;
+        let profile = {};
+        let skills = [];
+        let activeTab = 'profile';
+        let isSaving = false;
+        let isLoading = true;
+        let userId = null;
 
-                <!-- Banner 2: Hot Delivery -->
-                <div class="bg-orange-600 text-white p-8 rounded-xl shadow-xl transition-transform transform hover:scale-[1.02]">
-                    <div class="flex items-center justify-center text-4xl mb-3 font-bold">
-                        &#x1F6F5; <!-- Scooter Icon -->
-                    </div>
-                    <h3 class="text-2xl font-bold mb-2">Issiqlik Vaqti Kafolati</h3>
-                    <p class="text-orange-200">Optimallashtirilgan, to'plangan yetkazib berish marshrutlarimiz tufayli, taomingiz ofis tushlik vaqtida har doim issiq va yangi yetib kelishiga kafolat beramiz.</p>
-                </div>
-
-                <!-- Banner 3: Freshness & Efficiency -->
-                <div class="bg-blue-600 text-white p-8 rounded-xl shadow-xl transition-transform transform hover:scale-[1.02]">
-                    <div class="flex items-center justify-center text-4xl mb-3 font-bold">
-                        &#x2728; <!-- Sparkles for Freshness -->
-                    </div>
-                    <h3 class="text-2xl font-bold mb-2">Keyingi Kun Yangiligi</h3>
-                    <p class="text-blue-200">Oldindan buyurtma tizimi Pazandalarimizga faqat eng yangi ingredientlarni xarid qilish va ularni xuddi o'sha kuni pishirish imkonini beradi. Konservalangan yoki muzlatilgan emas, faqat yangi taom.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- 2. Value Proposition Grid (About) -->
-    <section id="about" class="bg-gray-50 section-padding content-block">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-extrabold text-gray-900 text-center mb-16">Nega Mahalla Go - Sog'lom Tanlov?</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
-                <!-- Card 1: Authentic Cuisine -->
-                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-orange-500">
-                    <div class="icon-box bg-orange-100 text-orange-600 mx-auto" aria-label="Authenticity">
-                        &#x1F372; <!-- Cooking Pot / Soup -->
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">100% Uy Taomi Mazasi</h3>
-                    <p class="text-gray-600">
-                        O'zbek uy taomlarining haqiqiy retseptlaridan bahramand bo'ling, tajribali mahalliy oshpazlar (`Pazandalar`) tomonidan tayyorlangan, tijorat yog'laridan holi.
-                    </p>
-                </div>
-                
-                <!-- Card 2: Health & Safety -->
-                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-green-500">
-                    <div class="icon-box bg-green-100 text-green-600 mx-auto" aria-label="Safety Checkmark">
-                        &#x1F4A6; <!-- Sweat Drops / Hygiene -->
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Tasdiqlangan Ishonch Tizimi</h3>
-                    <p class="text-gray-600">
-                        Har bir oshxona jismonan tekshirilib, <strong>Sanitariya Qoidalari va Normalari</strong> standartlari bo'yicha sertifikatlanadi, bu esa tasdiqlanmagan sotuvchilar bera olmaydigan xavfsizlikni taklif etadi.
-                    </p>
-                </div>
-
-                <!-- Card 3: Convenience & Value -->
-                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-blue-500">
-                    <div class="icon-box bg-blue-100 text-blue-600 mx-auto" aria-label="Speed/Time">
-                        &#x1F6F5; <!-- Scooter Icon -->
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Samarali, Issiq Yetkazib Berish</h3>
-                    <p class="text-gray-600">
-                        Bizning oldindan buyurtma modelimiz hududingizdagi buyurtmalarni jamlab, taomlaringizni ofis tushlik vaqtida issiq va arzon narxda yetib kelishini kafolatlaydi.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. The Mahalla Moat (Trust Section) -->
-    <!-- This section is now the full-width Trust Banner -->
-    <section id="moat" class="section-padding content-block bg-green-500 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="flex items-center justify-center mb-4">
-                <span class="text-6xl font-extrabold text-white">&#x2611;</span>
-            </div>
-            <h2 class="text-4xl font-extrabold mb-3">
-                BIZNING MAXSUS KAFOLATIMIZ: SANITARIYA QOIDALARI VA NORMALARI TASDIQLANGAN
-            </h2>
-            <p class="text-xl font-medium max-w-3xl mx-auto opacity-90">
-                Uy taomining sifati professional oziq-ovqat xavfsizligi standartlari bilan birlashtirilgan. Bizning har bir oshxonamiz shaxsan tekshirilgan.
-            </p>
-            
-            <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-                <!-- Moat Point 1 -->
-                <div class="bg-green-600 p-4 rounded-lg shadow-md">
-                    <span class="text-2xl mr-2">&#x1F50E;</span>
-                    <strong class="block text-lg mt-1">Jismoniy Audit</strong>
-                    <p class="text-sm opacity-80">Har bir Pazanda oshxonasini shaxsan tekshiramiz va standartlarga muvofiqligini ta'minlaymiz.</p>
-                </div>
-                <!-- Moat Point 2 -->
-                <div class="bg-green-600 p-4 rounded-lg shadow-md">
-                    <span class="text-2xl mr-2">&#x1F37D;</span>
-                    <strong class="block text-lg mt-1">Majburiy Ta'm Sinovi</strong>
-                    <p class="text-sm opacity-80">Taomlar platformaga qo'shilishidan oldin sifat va haqiqiy maza uchun sinovdan o'tkaziladi.</p>
-                </div>
-                <!-- Moat Point 3 -->
-                <div class="bg-green-600 p-4 rounded-lg shadow-md">
-                    <span class="text-2xl mr-2">&#x1F512;</span>
-                    <strong class="block text-lg mt-1">O'z-o'zidan Ishonch</strong>
-                    <p class="text-sm opacity-80">Biz Instagram/tartibga solinmagan yetkazib berish xavfini bartaraf etamiz.</p>
-                </div>
-            </div>
-
-            <!-- Removed the small chart-container from the right side -->
-        </div>
-    </section>
-
-    <!-- 4. Product Experience (How It Works) -->
-    <section id="product" class="bg-gray-50 section-padding content-block">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-extrabold text-gray-900 text-center mb-16">Oddiy Mahalla Go Tajribasi</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-                <!-- Connector Lines (Visual only, hidden on small screens) -->
-                <div class="hidden md:block absolute top-1/2 left-0 right-0 transform -translate-y-1/2">
-                    <div class="h-1 bg-orange-200 mx-10"></div>
-                </div>
-
-                <!-- Step 1: Pre-Order -->
-                <div class="relative text-center p-6 bg-white rounded-xl shadow-lg z-10">
-                    <div class="icon-box bg-orange-600 text-white mx-auto shadow-md">
-                        &#x1F4DD; <!-- Memo / Order -->
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Taomga Oldindan Buyurtma Berish</h3>
-                    <p class="text-gray-600">
-                        Sertifikatlangan Pazandalarning kunlik aylanma menyusini ko'ring va keyingi kun uchun soat 8:00 gacha buyurtma bering.
-                    </p>
-                </div>
-
-                <!-- Step 2: Batch Cooking -->
-                <div class="relative text-center p-6 bg-white rounded-xl shadow-lg z-10">
-                    <div class="icon-box bg-orange-600 text-white mx-auto shadow-md">
-                        &#x1F373; <!-- Cooking Pot / Chef -->
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Pazanda Tayyorlaydi</h3>
-                    <p class="text-gray-600">
-                        Uy oshpazi qancha ovqat tayyorlashni aniq biladi, bu esa chiqindilarni minimallashtiradi va eng yangi ingredientlardan foydalanishni ta'minlaydi.
-                    </p>
-                </div>
-
-                <!-- Step 3: Aggregated Delivery -->
-                <div class="relative text-center p-6 bg-white rounded-xl shadow-lg z-10">
-                    <div class="icon-box bg-orange-600 text-white mx-auto shadow-md">
-                        &#x1F6F5; <!-- Scooter Icon -->
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Issiq Yetkazib Berish</h3>
-                    <p class="text-gray-600">
-                        Bizning optimallashtirilgan marshrutlarimiz hududingizdagi buyurtmalarni jamlaydi va taom ofis tushlik vaqtida issiq yetib kelishini kafolatlaydi.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- NEW SECTION: Motivational Quote & Final CTA -->
-    <section id="quote-cta" class="bg-gray-900 section-padding">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <blockquote class="text-white mb-8">
-                <p class="text-3xl md:text-4xl font-bold italic leading-relaxed">
-                    "Salomatlik - bu shaxsiy sarmoyadir, unga e'tibor berish eng katta foyda keltiradi."
-                </p>
-            </blockquote>
-            
-            <h2 class="text-3xl font-extrabold text-white mb-6">Sog'lom Hayotni Bugundan Boshlang</h2>
-            
-            <a href="https://tally.so/r/vGXvNQ" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center px-12 py-4 border border-transparent text-xl font-bold rounded-lg text-white bg-orange-600 hover:bg-orange-700 transition-colors shadow-2xl transform hover:scale-105">
-                <span class="mr-2">&#x1F373;</span> Bugun Buyurtma Berish
-            </a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-50 border-t border-gray-200">
-        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
-            <div class="text-center md:text-left">
-                <p class="text-base text-gray-400">Mahalla Go &copy; 2026. Barcha huquqlar himoyalangan.</p>
-            </div>
-            <div class="mt-4 md:mt-0 text-center md:text-right">
-                <a href="#" class="text-sm text-gray-400 hover:text-gray-600">Maxfiylik Siyosati</a>
-                <span class="mx-2 text-gray-400">|</span>
-                <a href="#" class="text-sm text-gray-400 hover:text-gray-600">Xizmat Ko'rsatish Shartlari</a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script>
-        // NOTE: All language switching logic and associated variables have been removed.
+        // --- DATA CONSTANTS ---
+        const DB_PATH = `/artifacts/${appId}/users/`;
+        const getProfileRef = (uid) => doc(db, `${DB_PATH}${uid}/profile/main`);
+        const getSkillsRef = (uid) => collection(db, `${DB_PATH}${uid}/skills`);
         
-        // --- Chart Configs (kept for completeness, though charts were removed) ---
-        // Ensuring Chart is defined before attempting to use it
-        if (typeof Chart !== 'undefined') {
-            Chart.defaults.font.family = "'Inter', sans-serif";
-            Chart.defaults.color = '#475569';
+        const SKILL_CATEGORIES = [
+            { id: 'welder', uz: 'Payvandchi (Svarshik)', icon: 'Zap' },
+            { id: 'electrician', uz: 'Elektrik', icon: 'Zap' },
+            { id: 'mechanic', uz: 'Avtomobil mexanigi', icon: 'Zap' },
+            { id: 'builder', uz: 'Quruvchi (G‘isht teruvchi)', icon: 'Zap' },
+            { id: 'seamstress', uz: 'Tikuvchi (Ayollar uchun)', icon: 'Zap' },
+            { id: 'agro', uz: 'Qishloq xo‘jaligi ishchisi', icon: 'Zap' },
+        ];
+
+        // --- CORE RENDER FUNCTION ---
+        const root = document.getElementById('root');
+        
+        // Helper to safely render HTML strings
+        const renderHTML = (container, htmlString) => {
+            container.innerHTML = htmlString;
+        };
+
+        const renderApp = () => {
+            if (!root) return;
+            root.innerHTML = '';
+            
+            if (isLoading) {
+                renderHTML(root, `
+                    <div class="flex flex-col items-center justify-center min-h-[50vh]">
+                        <svg class="animate-spin h-8 w-8 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        <p class="mt-4 text-lg text-gray-700">Yuklanmoqda...</p>
+                    </div>
+                `);
+                return;
+            }
+
+            // Ensure user ID is available before proceeding
+            if (!userId) {
+                 renderHTML(root, `<div class="p-6 bg-red-100 text-red-700 rounded-xl max-w-md mx-auto">Autentifikatsiya xatosi. Iltimos, qayta urinib ko'ring.</div>`);
+                 return;
+            }
+
+            // Main container structure
+            const appContainer = document.createElement('div');
+            appContainer.className = "w-full max-w-4xl bg-white shadow-2xl rounded-2xl overflow-hidden min-h-[85vh] flex flex-col";
+            
+            // Render Header
+            const headerElement = document.createElement('div');
+            renderHTML(headerElement, renderHeader());
+            appContainer.appendChild(headerElement);
+
+            // Render Content based on activeTab
+            const contentArea = document.createElement('div');
+            contentArea.className = "flex-grow overflow-y-auto p-6 space-y-6";
+            renderHTML(contentArea, renderContent());
+            appContainer.appendChild(contentArea);
+
+            // Render Nav Bar (Fixed at bottom)
+            const navBarElement = document.createElement('div');
+            renderHTML(navBarElement, renderNavBar());
+            appContainer.appendChild(navBarElement);
+            
+            root.appendChild(appContainer);
+        };
+
+        // --- AUTH & DATA MANAGEMENT ---
+        onAuthStateChanged(auth, async (currentUser) => {
+            if (currentUser) {
+                user = currentUser;
+                userId = currentUser.uid;
+                await fetchProfile(userId);
+                listenToSkills(userId);
+            } else {
+                // Initial sign-in attempt
+                try {
+                    if (initialAuthToken) {
+                        const userCredential = await signInWithCustomToken(auth, initialAuthToken);
+                        user = userCredential.user;
+                        userId = user.uid;
+                    } else {
+                        const userCredential = await signInAnonymously(auth);
+                        user = userCredential.user;
+                        userId = user.uid;
+                    }
+                    await fetchProfile(userId);
+                    listenToSkills(userId);
+                } catch (error) {
+                    console.error("Authentication failed:", error);
+                    user = null;
+                    userId = null;
+                } finally {
+                    isLoading = false;
+                    renderApp();
+                }
+            }
+        });
+
+        const fetchProfile = async (uid) => {
+            try {
+                const docSnap = await getDoc(getProfileRef(uid));
+                if (docSnap.exists()) {
+                    profile = docSnap.data();
+                } else {
+                    profile = { name: 'Yangi Hunarmand', city: 'Tashkent', profession: 'Tanlanmagan', highestScore: 0 };
+                    await setDoc(getProfileRef(uid), profile); // Initialize default profile
+                }
+            } catch (e) {
+                console.error("Error fetching profile:", e);
+            }
+        };
+
+        const listenToSkills = (uid) => {
+            const q = query(getSkillsRef(uid));
+            onSnapshot(q, (snapshot) => {
+                skills = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                
+                // Calculate the highest score for the header
+                const maxScore = skills.reduce((max, s) => (s.score > max ? s.score : max), 0);
+                if (profile.highestScore !== maxScore) {
+                    profile.highestScore = maxScore;
+                    // Note: We don't save this change to Firestore here to avoid infinite loops,
+                    // but we update the local profile for the display.
+                }
+
+                renderApp();
+            }, (error) => {
+                console.error("Error listening to skills:", error);
+            });
+        };
+
+        // --- ACTION HANDLERS ---
+        window.handleProfileSave = async (e) => {
+            e.preventDefault();
+            if (isSaving || !userId) return;
+            isSaving = true;
+            renderApp(); 
+
+            try {
+                const formData = new FormData(e.target);
+                const newProfile = {
+                    name: formData.get('name') || 'HunAi Foydalanuvchisi', // Updated name fallback
+                    city: formData.get('city') || 'Noma\'lum',
+                    profession: formData.get('profession') || 'Tanlanmagan',
+                    highestScore: profile.highestScore || 0,
+                    updatedAt: serverTimestamp()
+                };
+
+                await setDoc(getProfileRef(userId), newProfile, { merge: true });
+                profile = newProfile;
+                alert("Profil muvaffaqiyatli saqlandi!");
+            } catch (e) {
+                console.error("Error saving profile:", e);
+                alert("Profilni saqlashda xato: Iltimos, qayta urinib ko'ring.");
+            } finally {
+                isSaving = false;
+                renderApp();
+            }
+        };
+        
+        // --- NEW/UPDATED HANDLE VERIFY SKILL ---
+        // NOTE: This function is now simplified and relies on the input being part of the HTML structure.
+        
+        const processVideoForSkill = async (skillId, skillUz) => {
+            if (isSaving || !userId) return;
+            
+            isSaving = true;
+            renderApp(); 
+
+            // Simulate Network Delay and AI Processing
+            await new Promise(resolve => setTimeout(resolve, 3000)); // 3 second simulation
+
+            try {
+                const aiResult = simulateAIScore(skillId);
+                
+                await setDoc(doc(getSkillsRef(userId), skillId), {
+                    skillId: skillId,
+                    skillNameUz: skillUz,
+                    score: aiResult.score,
+                    feedback: aiResult.feedback,
+                    verifiedAt: serverTimestamp(),
+                    isVerified: true,
+                    verificationMethod: 'AI Video Analysis'
+                }, { merge: true });
+
+                alert(`✅ Hunar tekshirildi! ${skillUz} uchun AI ballingiz: ${aiResult.score}%.`);
+            } catch (e) {
+                console.error("Error verifying skill:", e);
+                alert("Tekshirishda xato yuz berdi. Iltimos, qayta urinib ko'ring.");
+            } finally {
+                isSaving = false;
+                renderApp();
+            }
+        };
+
+        // --- AI SIMULATION LOGIC ---
+        const simulateAIScore = (skillId) => {
+            let baseScore = Math.floor(Math.random() * (75 - 55 + 1) + 55); 
+            
+            if (['welder', 'electrician', 'mechanic'].includes(skillId)) {
+                baseScore = Math.floor(Math.random() * (85 - 65 + 1) + 65);
+            }
+
+            const score = Math.min(99, baseScore + Math.floor(Math.random() * 10));
+            
+            return {
+                score: score,
+                feedback: score > 80 
+                    ? "A'lo daraja! Texnikangiz juda aniq va xavfsiz. Chet el ishlari uchun tayyor." 
+                    : score > 60 
+                    ? "Yaxshi natija. Ballingizni oshirish uchun xavfsizlik choralariga e'tibor bering."
+                    : "Qo'shimcha mashg'ulot talab etiladi. Qo'llaringizni yanada aniqroq ishlating.",
+                verifiedDate: serverTimestamp(),
+            };
+        };
+
+        // --- RENDERING COMPONENTS ---
+
+        const renderHeader = () => {
+            const maxScore = skills.reduce((max, s) => (s.score > max ? s.score : max), 0);
+            const totalScore = maxScore > 0 ? maxScore : 'N/A';
+
+            return `
+                <div class="bg-gradient-to-r from-indigo-600 to-indigo-800 p-6 text-white shadow-lg sm:rounded-t-xl">
+                    <div class="flex justify-between items-center">
+                        <div class="space-y-1">
+                            <h1 class="text-2xl font-bold tracking-tight">${profile.name || 'HunAi Foydalanuvchisi'}</h1>
+                            <p class="text-indigo-200 text-sm">${profile.profession || 'Tanlanmagan Kasb'}</p>
+                        </div>
+                        <div class="flex flex-col items-center space-x-2 bg-white/20 p-3 rounded-xl backdrop-blur-sm shadow-md">
+                            <svg class="w-6 h-6 text-yellow-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                            <span class="text-2xl font-extrabold text-yellow-300">${totalScore}</span>
+                            <span class="text-xs text-indigo-300 mt-1">AI Balli</span>
+                        </div>
+                    </div>
+                    <p class="text-xs mt-3 text-indigo-300">
+                        Foydalanuvchi ID: ${userId}
+                    </p>
+                </div>
+            `;
+        };
+
+        const renderNavBar = () => {
+            const buttons = [
+                { id: 'profile', label: "Profil", icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>` },
+                { id: 'verify', label: "Hunar Tekshiruv", icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.55-4.55A1 1 0 0019 4H5a2 2 0 00-2 2v12a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2h-3.45z"/><circle cx="12" cy="13" r="3"/></svg>` },
+                { id: 'jobs', label: "Ishlar", icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zM7 9h6"/></svg>` },
+            ];
+
+            return `
+                <nav class="fixed bottom-0 left-0 right-0 border-t border-gray-200 bg-white shadow-2xl z-10 w-full sm:hidden">
+                    <div class="flex justify-around py-2">
+                        ${buttons.map(btn => `
+                            <button
+                                onclick="window.setActiveTab('${btn.id}')"
+                                class="flex flex-col items-center p-2 rounded-xl transition-colors ${
+                                    activeTab === btn.id
+                                        ? 'text-indigo-600 bg-indigo-50 shadow-inner'
+                                        : 'text-gray-500 hover:text-indigo-600 hover:bg-gray-100'
+                                }"
+                            >
+                                ${btn.icon}
+                                <span class="text-xs font-medium mt-1">${btn.label}</span>
+                            </button>
+                        `).join('')}
+                    </div>
+                </nav>
+                <!-- Desktop NavBar for wide screens --><nav class="hidden sm:flex fixed top-0 left-0 right-0 bg-white shadow-md z-10 justify-center">
+                    <div class="flex max-w-4xl w-full justify-around py-3 px-6">
+                        <span class="text-xl font-bold text-indigo-600">HunAi</span>
+                        ${buttons.map(btn => `
+                            <button
+                                onclick="window.setActiveTab('${btn.id}')"
+                                class="flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors font-medium ${
+                                    activeTab === btn.id
+                                        ? 'text-indigo-700 bg-indigo-100'
+                                        : 'text-gray-600 hover:text-indigo-600 hover:bg-gray-50'
+                                }"
+                            >
+                                ${btn.icon}
+                                <span>${btn.label}</span>
+                            </button>
+                        `).join('')}
+                    </div>
+                </nav>
+            `;
+        };
+        
+        window.setActiveTab = (tabId) => {
+            activeTab = tabId;
+            renderApp();
+        };
+
+        const renderContent = () => {
+            switch (activeTab) {
+                case 'profile':
+                    return renderProfileTab();
+                case 'verify':
+                    return renderVerificationTab();
+                case 'jobs':
+                    return renderJobsTab();
+                default:
+                    return `<div>Tab topilmadi.</div>`;
+            }
+        };
+
+        const renderProfileTab = () => {
+            const categoriesOptions = SKILL_CATEGORIES.map(cat => `<option value="${cat.uz}" ${profile.profession === cat.uz ? 'selected' : ''}>${cat.uz}</option>`).join('');
+
+            return `
+                <div class="bg-white p-6 rounded-xl shadow-md border border-indigo-100">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">Shaxsiy Ma'lumotlar</h2>
+                    <form onsubmit="window.handleProfileSave(event)" class="space-y-4">
+                        <label class="block">
+                            <span class="text-sm font-medium text-gray-600">To'liq Ism</span>
+                            <input
+                                type="text"
+                                name="name"
+                                value="${profile.name || ''}"
+                                required
+                                class="mt-1 block w-full rounded-lg border border-gray-300 p-3 focus:ring-indigo-500 focus:border-indigo-500"
+                            />
+                        </label>
+                        <label class="block">
+                            <span class="text-sm font-medium text-gray-600">Shahar / Viloyat</span>
+                            <input
+                                type="text"
+                                name="city"
+                                value="${profile.city || ''}"
+                                class="mt-1 block w-full rounded-lg border border-gray-300 p-3 focus:ring-indigo-500 focus:border-indigo-500"
+                            />
+                        </label>
+                        <label class="block">
+                            <span class="text-sm font-medium text-gray-600">Asosiy Kasb</span>
+                            <select
+                                name="profession"
+                                class="mt-1 block w-full rounded-lg border border-gray-300 p-3 focus:ring-indigo-500 focus:border-indigo-500"
+                            >
+                                ${categoriesOptions}
+                            </select>
+                        </label>
+                        <button
+                            type="submit"
+                            ${isSaving ? 'disabled' : ''}
+                            class="w-full bg-indigo-600 text-white py-3 rounded-xl font-semibold shadow-lg video-upload-btn disabled:bg-gray-400 disabled:shadow-none"
+                        >
+                            ${isSaving ? "Saqlanmoqda..." : "Saqlash va Yangilash"}
+                        </button>
+                    </form>
+                </div>
+            `;
+        };
+
+        const renderVerificationTab = () => {
+            const skillListHTML = SKILL_CATEGORIES.map((cat) => {
+                const verifiedSkill = skills.find(s => s.skillId === cat.id);
+                const isVerified = !!verifiedSkill;
+                const score = isVerified ? verifiedSkill.score : null;
+                const feedback = isVerified ? verifiedSkill.feedback : 'Tekshirilmagan.';
+
+                const iconSvg = isVerified 
+                    ? `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`
+                    : `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.55-4.55A1 1 0 0019 4H5a2 2 0 00-2 2v12a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2h-3.45z"/><circle cx="12" cy="13" r="3"/></svg>`;
+
+                return `
+                    <div class="p-4 rounded-xl shadow-lg flex items-center justify-between transition duration-150 ${isVerified ? 'bg-green-50 border-green-300' : 'bg-white border-gray-200'}">
+                        <div class="flex-grow">
+                            <h3 class="font-semibold text-lg text-gray-800 flex items-center">${iconSvg} ${cat.uz}</h3>
+                            <p class="text-sm text-gray-600 mt-1">${feedback}</p>
+                        </div>
+                        
+                        <div class="relative">
+                            <button
+                                ${isSaving ? 'disabled' : ''}
+                                class="px-4 py-2 rounded-full text-sm font-bold text-white shadow-md video-upload-btn disabled:bg-gray-400 disabled:shadow-none"
+                            >
+                                ${isSaving ? 'Jarayonda...' : (isVerified ? `Ball: ${score}%` : 'Video Yuklash')}
+                                
+                                <input
+                                    type="file"
+                                    class="file-input-overlay"
+                                    accept="video/*"
+                                    onchange="window.handleVideoSelection(event, '${cat.id}', '${cat.uz}')"
+                                />
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            return `
+                <div class="space-y-6">
+                    <h2 class="text-2xl font-bold text-gray-800">Hunar Tekshiruv (AI Score)</h2>
+                    <p class="text-gray-600 text-base">Kasbingizni tasdiqlash uchun 30 soniyalik video yuklang. AI ballingiz qancha yuqori bo'lsa, chet eldagi ishlar uchun shuncha ko'p imkoniyat olasiz!</p>
+                    
+                    ${isSaving ? `
+                        <div class="p-4 bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 rounded-lg">
+                            <p class="font-semibold">AI tahlili va ball berish jarayoni ketmoqda...</p>
+                        </div>
+                    ` : ''}
+
+                    <div class="space-y-3">
+                        ${skillListHTML}
+                    </div>
+                </div>
+            `;
+        };
+        
+        // --- NEW EVENT HANDLER FOR FILE SELECTION ---
+        window.handleVideoSelection = async (event, skillId, skillUz) => {
+            const file = event.target.files[0];
+            
+            if (!file) {
+                console.log("Video yuklash bekor qilindi.");
+                // Reset the input value so the next click works even if they select the same file
+                event.target.value = null; 
+                return;
+            }
+
+            // File validation (optional)
+            if (!file.type.startsWith('video/') || file.size > 50 * 1024 * 1024) { // 50MB limit simulated
+                alert("Iltimos, video fayl yuklang (Maks. 50MB).");
+                event.target.value = null; 
+                return;
+            }
+
+            // Start AI simulation/processing
+            if (confirm(`"${file.name}" nomli video yuklandi. AI tahlilini boshlashni tasdiqlaysizmi? (3 soniya)`)) {
+                await processVideoForSkill(skillId, skillUz);
+            }
+            
+            // Reset the input value after processing or cancellation
+            event.target.value = null; 
+        };
+
+        const renderJobsTab = () => {
+            const maxScore = skills.reduce((max, s) => (s.score > max ? s.score : max), 0);
+            const highestSkill = skills.find(s => s.score === maxScore) || { skillNameUz: 'Noma\'lum', score: 0, skillId: '' };
+            const baseScore = highestSkill.score;
+            
+            const renderJobCards = () => {
+                if (skills.length === 0 || baseScore < 65) {
+                    return `
+                        <div class="p-6 bg-yellow-50 border-2 border-yellow-300 rounded-xl shadow-md text-center">
+                            <h3 class="text-xl font-bold text-yellow-800 mb-2">Hunar Balingizni Oshiring!</h3>
+                            <p class="text-gray-700">AI ballingiz ${baseScore}% (65% dan past). Yuqori maoshli ishlar uchun avval "Hunar Tekshiruv" yorlig'ida malakangizni tasdiqlang va ballingizni oshiring.</p>
+                        </div>
+                    `;
+                }
+
+                // AI Job Matching Simulation based on score
+                const jobs = [];
+                const baseSalary = baseScore * 15;
+
+                jobs.push({
+                    title: `${highestSkill.skillNameUz} bo'yicha chet elda ish`,
+                    description: `(MIGRASIYA IMKONIYATI) Yaponiya/Germaniya shartnomasi. AI balli ${baseScore}% talab qilinadi.`,
+                    salary: `$${(baseSalary * 2.5).toFixed(0)} - $${(baseSalary * 4).toFixed(0)} / Oy`,
+                    verified: true
+                });
+
+                jobs.push({
+                    title: `AI Tasdiqlangan ${highestSkill.skillNameUz} (Toshkent)`,
+                    description: `Yirik Qurilish/Ishlab chiqarish Kompaniyasida doimiy ish. Yuqori ball tufayli to'g'ridan-to'g'ri intervyu.`,
+                    salary: `$${(baseSalary * 1.5).toFixed(0)} - $${(baseSalary * 2.5).toFixed(0)} / Oy`,
+                    verified: true
+                });
+
+                jobs.push({
+                    title: `Mahalliy Gig Ishlari`,
+                    description: `Kichik ta'mirlash va qisqa muddatli loyihalar. HunAi tekshiruvi orqali xaridorlar sizga to'liq ishonadi.`, // Updated name
+                    salary: `Kunning ${baseSalary * 0.15} Gacha / Kun`,
+                    verified: true
+                });
+
+                return jobs.map((job, index) => `
+                    <div key=${index} class="p-5 rounded-xl shadow-lg transition duration-200 bg-white border-b-4 border-indigo-500">
+                        <h3 class="text-xl font-bold text-indigo-800">${job.title}</h3>
+                        <p class="text-sm text-gray-600 mt-1">${job.description}</p>
+                        <div class="flex justify-between items-center mt-3 pt-3 border-t border-gray-100">
+                            <p class="text-xl font-extrabold text-green-600">${job.salary}</p>
+                            <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-indigo-700 shadow-md">
+                                Murojaat etish
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            };
+
+            return `
+                <div class="space-y-6">
+                    <h2 class="text-2xl font-bold text-gray-800">AI tomonidan Saralangan Ish Imkoniyatlari</h2>
+                    <p class="text-gray-600 text-base">Sizning ${highestSkill.skillNameUz} bo'yicha ${baseScore}% AI ballingiz asosida eng yuqori maoshli ishlar:</p>
+                    
+                    <div class="space-y-4">
+                        ${renderJobCards()}
+                    </div>
+                    <div class="text-sm text-gray-500 pt-4 border-t border-gray-200 text-center">
+                        🤝 HunAi (Ustoz) platformasi faqat tasdiqlangan hunarmandlarga eng yaxshi imkoniyatlarni taqdim etadi.
+                    </div>
+                </div>
+            `;
+        };
+        
+        // Initial render after successful authentication check
+        if (!initialAuthToken && !firebaseConfig.apiKey) {
+            isLoading = false;
+            root.innerHTML = `<div class="p-6 bg-red-100 text-red-700 rounded-xl max-w-md mx-auto">Firebase konfiguratsiyasi topilmadi. Iltimos, Firebase kalitlarini kiriting.</div>`;
         }
 
-        // JavaScript for Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
+        // --- Execute initial render (will be updated by the listener) ---
+        renderApp();
 
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // Hide menu when clicking a link
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
     </script>
 </body>
 </html>
